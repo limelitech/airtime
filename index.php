@@ -35,7 +35,7 @@
         border-radius: 20px;
         background: #f3f4f6;
         padding: 5px 20px 5px;
-        color: #8d9297;
+        color: white;
       }
 
       .justify-content-around span {
@@ -44,7 +44,7 @@
 
       .justify-content-around div:hover {
         background: #545ebd;
-        color: #fff;
+        color: grey;
         cursor: pointer;
       }
 
@@ -75,16 +75,22 @@
       img {
         border-radius: 15px;
       }
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+      }
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
     <div class="container d-flex justify-content-center">
       <div class="card mt-5 px-3 py-4">
         <div class="d-flex flex-row justify-content-around">
-          <div class="mpesa"><span>Safaricom </span></div>
-          <div class="airtel"><span>Airtel</span></div>
-          <div class="telcom"><span>Telcom</span></div>
+          <div class="mpesa tablinks" onclick="openCity(event, 'safaricom')"><span>Safaricom</span></div>
+          <div class="airtel tablinks" onclick="openCity(event, 'airtel')"><span>Airtel</span></div>
+          <div class="telcom tablinks" onclick="openCity(event, 'telcom')"><span>Telcom</span></div>
         </div>
+        <div  id="safaricom" class="tabcontent">
         <div class="media mt-4 pl-2">
           <img src="./images/safaricom.png" class="mr-3" height="75" />
           <div class="media-body">
@@ -93,7 +99,6 @@
         </div>
         <div class="media mt-3 pl-2">
                           <!--bs5 input-->
-
             <form class="row g-3" action="./stk_initiate.php" method="POST">
             
                 <div class="col-12">
@@ -109,10 +114,79 @@
                   <button type="submit" class="btn btn-success" name="submit" value="submit">Buy Now</button>
                 </div>
                 <div class="col-6">
-                  <button type="submit" class="btn btn-danger" name="submit" value="submit">Back</button>
+                  <a class="btn btn-danger" href="http://limelitech.com/">Back</a>
                 </div>
               </form>
               <!--bs5 input-->
+          </div>
+          </div>
+        <div  id="airtel" class="tabcontent">
+        <div class="media mt-4 pl-2">
+          <img src="./images/airtel.png" class="mr-3" height="50" width="100" />
+          <div class="media-body">
+            <h6 class="mt-1">Enter Amount & Number</h6>
+          </div>
+        </div>
+        <div class="media mt-3 pl-2">
+                          <!--bs5 input-->
+            <form class="row g-3" action="./stk_initiate.php" method="POST">
+            
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Amount</label>
+                  <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label" >Mpesa Phone Number</label>
+                  <input type="text" class="form-control" name="phone"  placeholder="Enter your Mpesa Number">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label" >Airtel Phone Number</label>
+                  <input type="text" class="form-control" name="phone"  placeholder="Enter your Airtel Number">
+                </div>
+             
+                <div class="col-6">
+                  <button type="submit" class="btn btn-success" name="submit" value="submit">Buy Now</button>
+                </div>
+                <div class="col-6">
+                  <a class="btn btn-danger" href="http://limelitech.com/">Back</a>
+                </div>
+              </form>
+              <!--bs5 input-->
+          </div>
+          </div>
+        <div  id="telcom" class="tabcontent">
+        <div class="media mt-4 pl-2">
+          <img src="./images/telcom.png" class="mr-3" height="80" width="150" />
+          <div class="media-body">
+            <h6 class="mt-1">Enter Amount & Number</h6>
+          </div>
+        </div>
+        <div class="media mt-3 pl-2">
+                          <!--bs5 input-->
+            <form class="row g-3" action="./stk_initiate.php" method="POST">
+            
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Amount</label>
+                  <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label" >Mpesa Phone Number</label>
+                  <input type="text" class="form-control" name="phone"  placeholder="Enter your Mpesa Number">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label" >Telcom Phone Number</label>
+                  <input type="text" class="form-control" name="phone"  placeholder="Enter your Telcom Number">
+                </div>
+             
+                <div class="col-6">
+                  <button type="submit" class="btn btn-success" name="submit" value="submit">Buy Now</button>
+                </div>
+                <div class="col-6">
+                  <a class="btn btn-danger" href="http://limelitech.com/">Back</a>
+                </div>
+              </form>
+              <!--bs5 input-->
+          </div>
           </div>
         </div>
       </div>
@@ -124,5 +198,20 @@
     <script type="text/javascript" src=""></script>
     <script type="text/javascript" src=""></script>
     <script type="text/Javascript"></script>
+    <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
   </body>
 </html>
